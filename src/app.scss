@@ -1,0 +1,170 @@
+/**
+ * Demo app styles.
+ */
+$padSpace: 1em;
+$lineWidth: 2px;
+$lineStyle: solid;
+$lineColor: rgba( 255, 255, 255, 0.04 );
+$lineJoin: 4px;
+$fontFamily: 'Helvetica', 'Arial', sans-serif;
+$fontSize: 20px;
+$colorDocument: #24293f;
+$colorDocumentText: #e0e8ec;
+$fxSpeed: 400ms;
+$fxEase: cubic-bezier( 0.215, 0.610, 0.355, 1.000 );
+$fxEaseBounce: cubic-bezier( 0.640, -0.280, 0.050, 1.405 );
+$sizeSmall: 420px;
+$sizeMedium: 720px;
+$sizeLarge: 1280px;
+$screenSmall: "only screen and (min-width : #{$sizeSmall})";
+$screenMedium: "only screen and (min-width : #{$sizeMedium})";
+$screenLarge: "only screen and (min-width : #{$sizeLarge})";
+
+/**
+ * Global resets and documet setup.
+ */
+
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background-color: transparent;
+  appearance: none;
+  text-transform: none;
+  text-shadow: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform-style: flat;
+  transition:
+    color $fxSpeed $fxEase,
+    border-color $fxSpeed $fxEase,
+    background-color $fxSpeed $fxEase,
+    opacity $fxSpeed $fxEase,
+    transform $fxSpeed $fxEase;
+}
+
+// remove ouline fro active elements
+*:active, *:hover, *:focus {
+  outline: none !important;
+}
+
+// Block types
+article, aside, details, figcaption, figure, footer, header, hgroup,
+menu, nav, section, main, summary, div, h1, h2, h3, h4, h5, h6, hr,
+p, ol, ul, form, img {
+  display: block;
+}
+
+// Document
+html, body {
+  display: block;
+  position: relative;
+  max-width: 100vw;
+  min-height: 100vh;
+}
+html {
+  overflow: hidden;
+  overflow-y: scroll;
+}
+body {
+  font-family: $fontFamily;
+  font-weight: normal;
+  font-size: calc( #{$fontSize} - 4px );
+  line-height: 1.6em;
+  background-color: $colorDocument;
+  color: $colorDocumentText;
+
+  @media #{$screenMedium} {
+    font-size: calc( #{$fontSize} - 2px );
+  }
+  @media #{$screenLarge} {
+    font-size: $fontSize;
+  }
+}
+
+// cursor for clickable elements
+.clickable, [clickable] {
+  cursor: pointer;
+}
+
+// not rendered
+.hidden, [hidden] {
+  display: none;
+}
+
+// visible but not usable
+.disabled, [disabled] {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+// common inner container
+.container {
+  display: block;
+  margin: 0 auto;
+  padding: 0 $padSpace;
+  width: 100%;
+
+  @media #{$screenMedium} {
+    padding: 0;
+    width: 92%;
+  }
+  @media #{$screenLarge} {
+    max-width: $sizeLarge;
+  }
+}
+
+// links
+a {
+  color: lighten( $colorDocument, 40% );
+}
+
+// paragraphs
+p {
+  margin-bottom: $padSpace;
+}
+* > p:last-of-type {
+  margin-bottom: 0;
+}
+
+// horizontal lines
+hr {
+  display: block;
+  margin: ( $padSpace * 2 ) 0;
+  border: 0;
+  border-top: $lineWidth $lineStyle $lineColor;
+}
+
+// original headings
+h1, h2, h3, h4, h5, h6 {
+  display: block;
+  padding: 0;
+  line-height: 1.2em;
+  font-weight: normal;
+}
+h1 { font-size: 240%; letter-spacing: -3px; }
+h2 { font-size: 210%; letter-spacing: -2px; }
+h3 { font-size: 180%; letter-spacing: -1px; }
+h4 { font-size: 150%; }
+h5 { font-size: 120%; }
+h6 { font-size: 100%; }
+
+// common headings
+.heading {
+  display: block;
+  overflow: visible !important;
+  margin: 0 0 $padSpace 0;
+  padding: 0;
+  line-height: 1em;
+}
+
+// main container
+.main-wrap {
+  padding: ( $padSpace * 2 ) 0;
+}
+
+
