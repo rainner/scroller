@@ -20,7 +20,7 @@
     "url": "https://github.com/rainner/scroller/issues"
   },
   "homepage": "https://github.com/rainner/scroller#readme",
-  "main": "dist/scroller.js",
+  "main": "src/scroller.js",
   "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.0.0",
