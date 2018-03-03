@@ -15,6 +15,7 @@ export default class Scroller {
     this._max       = 0;
     this._ease      = 8;
     this._scrolling = true;
+    this._scrollcb  = null;
     this._callbacks = [];
     this._jumpcb    = null;
     this._onTick    = this._onTick.bind( this );
@@ -23,6 +24,12 @@ export default class Scroller {
 
     this._sint = setInterval( this._onTick, 200 );
     window.addEventListener( 'scroll', this._onScroll, false );
+    window.addEventListener( 'load', this._onLoad, false );
+  }
+
+  // function to call on actual scroll event
+  onScroll( callback ) {
+    this._scrollcb = callback;
   }
 
   // when scroll position changes
@@ -48,6 +55,19 @@ export default class Scroller {
   // when scroll position is less than given pos
   lessThan( pos, callback ) {
     this._addCallback( 'less', pos, callback );
+  }
+
+  // toggle a class on elements that enter/leave the visible area of the window
+  onVisible( elms, clss, callback ) {
+    if ( !elms || !clss ) return;
+    this._callbacks.push({
+      called   : false,
+      trigger  : 'reveal',
+      position : 0,
+      elms     : this._getElmList( elms ),
+      clss     : String( clss || 'visible' ).trim(),
+      callback : ( typeof callback === 'function' ) ? callback : function(){},
+    });
   }
 
   // auto scroll page to a target destination
@@ -87,6 +107,12 @@ export default class Scroller {
     }
   }
 
+  // fire initial tick when page is ready
+  _onLoad() {
+    this._scrolling = true;
+    this._onTick();
+  }
+
   // called from setInterval ticks
   _onTick() {
     if ( !this._scrolling ) return;
@@ -113,6 +139,17 @@ export default class Scroller {
           if ( !cb.called && sp < cb.position ) cb.callback( sp );
           cb.called = ( sp < cb.position );
         }
+        else if ( cb.trigger === 'reveal' ) {
+          for ( let x = 0; x < cb.elms.length; ++x ) {
+            let elm  = cb.elms[ x ];
+            let box  = elm.getBoundingClientRect();
+            let yPos = box.top + ( box.height / 2 ); // elm center
+            let vis  = ( yPos >= 0 && yPos <= window.innerHeight );
+            let func = vis ? 'add' : 'remove';
+            elm.classList[ func ]( cb.clss );
+            cb.callback( elm, vis, sp );
+          }
+        }
         continue;
       }
       cb.called = false;
@@ -125,6 +162,9 @@ export default class Scroller {
   // page scrolling detected
   _onScroll( e ) {
     this._scrolling = true;
+    if ( typeof this._scrollcb === 'function' ) {
+      this._scrollcb( e );
+    }
   }
 
   // add custom callback to the list
@@ -136,6 +176,20 @@ export default class Scroller {
       position : position | 0,  // when to call it, or none
       callback : callback,      // custom callback
     });
+  }
+
+  // resolve list of elements from an arg
+  _getElmList( elms ) {
+    if ( typeof elms === 'string' ) {
+      return document.querySelectorAll( elms );
+    }
+    if ( Array.isArray( elms ) || elms instanceof NodeList ) {
+      return elms;
+    }
+    if ( elms instanceof Element ) {
+      return [ elms ];
+    }
+    return [];
   }
 
   // auto-scroll animation loop
