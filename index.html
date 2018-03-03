@@ -7,150 +7,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <meta name="description" id="description" content="This is a description" />
     <meta name="author" content="Rainner Lins | @raintek_ | http://rainnerlins.com | https://github.com/rainner" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Kreon" />
     <link rel="stylesheet" href="public/app.min.css" />
 </head>
 <body>
 
-  <main class="main-wrap">
+  <!-- page header -->
+  <header id="header" class="header">
     <div class="container">
-      <h1>Scroller</h1>
+      <div class="flex-row flex-middle flex-space">
+        <h1 class="logo">Scroller</h1>
+        <a class="btn" href="https://github.com/rainner/scroller">View on Github</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- page content -->
+  <main class="main">
+    <div class="container">
+      <h5>
+        This is a demo page for a Javascript scroll handling class
+        used to attach custom callbacks to scroll behavior as the page is being scrolled,
+        or to jump to specific sections of the page as needed.
+      </h5>
+
       <hr />
-      <p>
-        Demo coming soon. For now, look at the console. <br />
-        <a href="#" data-scroll="bottom">Scroll to bottom</a>.
-      </p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>Demo coming soon.</p>
-      <p>
-        <a href="#" data-scroll="top">Back to top</a>.
-      </p>
+
+      <div class="flex-row flex-row-reverse">
+
+        <!-- info about scroll data -->
+        <div class="stats-wrap card">
+          <p>
+            <b>Position (realtime):</b> <br />
+            <span id="stat-pos-real">0</span>
+          </p>
+          <p>
+            <b>Position (throttled):</b> <br />
+            <span id="stat-pos-slow">0</span>
+          </p>
+          <p>
+            <b>Scroll direction:</b> <br />
+            <span id="stat-direction">...</span>
+          </p>
+          <p>
+            <b>Trigger position:</b> <br />
+            <span id="stat-trigger">...</span>
+          </p>
+          <p>
+            <b>Scroll to:</b> <br />
+            <a href="#" data-scroll="top">Top</a> <br />
+            <a href="#" data-scroll="middle">Middle</a> <br />
+            <a href="#" data-scroll="bottom">Bottom</a> <br />
+          </p>
+        </div>
+
+        <!-- page content -->
+        <div class="content-wrap flex-1">
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+          <hr />
+          <div class="card reveal">
+            <h2>Reveal</h2>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+          </div>
+          <hr />
+          <div class="card reveal">
+            <h2>Reveal</h2>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+          </div>
+          <hr />
+          <div class="card reveal">
+            <h2>Reveal</h2>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+          </div>
+          <hr />
+          <div class="card reveal">
+            <h2>Reveal</h2>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+          </div>
+          <hr />
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+        </div>
+
+      </div>
     </div>
   </main>
+
+  <!-- page footer -->
+  <footer class="footer">
+    <hr />
+    <div class="container text-center">
+      Author: <a href="https://github.com/rainner">Rainner Lins</a> &nbsp;|&nbsp;
+      License: <a href="https://opensource.org/licenses/mit-license.php" target="_blank">MIT</a> &nbsp;|&nbsp;
+      Source: <a href="https://github.com/rainner/scroller">Github repo</a>
+    </div>
+  </footer>
 
   <script src="public/app.min.js"></script>
 </body>
