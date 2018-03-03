@@ -24,6 +24,14 @@ import Scroller from 'scroller';
 // setup scroller on target element (default: documentElement)
 let scroller = new Scroller( null );
 
+// toggle "visible" class on all ".reveal" elements when they enter/leave the visible area of the window
+scroller.onVisible( '.reveal', 'visible' );
+
+// when scroll position changes (realtime)
+scroller.onScroll( e => {
+    console.log( e.pageY );
+});
+
 // when scroll position changes (throttled)
 scroller.onChange( pos => {
     console.log( pos );
