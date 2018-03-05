@@ -5,26 +5,34 @@
 export default class Scroller {
 
   // constructor
-  constructor( target ) {
+  constructor( target, options ) {
     let _t = document.scrollingElement || document.documentElement || window;
 
-    this._target    = ( typeof target === 'object' ) ? target : _t;
+    this._options = Object.assign( {
+      // setInterval time in milliseconds to control the throttled scroll handler.
+      intervalTime: 200,
+      // interpolation factor number for the scrolling animation (bigger = slower).
+      easeFactor: 10,
+      // ...
+    }, options );
+
+    this._target    = ( target instanceof Element ) ? target : _t;
     this._pos       = 0;
     this._to        = 0;
     this._min       = 0;
     this._max       = 0;
-    this._ease      = 8;
     this._scrolling = true;
     this._scrollcb  = null;
     this._callbacks = [];
     this._jumpcb    = null;
     this._onTick    = this._onTick.bind( this );
     this._onScroll  = this._onScroll.bind( this );
+    this._onResize  = this._onResize.bind( this );
     this._loop      = this._loop.bind( this );
+    this._sint      = setInterval( this._onTick, this._options.intervalTime );
 
-    this._sint = setInterval( this._onTick, 200 );
     window.addEventListener( 'scroll', this._onScroll, false );
-    window.addEventListener( 'load', this._onLoad, false );
+    window.addEventListener( 'resize', this._onResize, false );
   }
 
   // function to call on actual scroll event
@@ -57,17 +65,11 @@ export default class Scroller {
     this._addCallback( 'less', pos, callback );
   }
 
-  // toggle a class on elements that enter/leave the visible area of the window
-  onVisible( elms, clss, callback ) {
-    if ( !elms || !clss ) return;
-    this._callbacks.push({
-      called   : false,
-      trigger  : 'reveal',
-      position : 0,
-      elms     : this._getElmList( elms ),
-      clss     : String( clss || 'visible' ).trim(),
-      callback : ( typeof callback === 'function' ) ? callback : function(){},
-    });
+  // when elements enter and leave the viewport area
+  onVisible( target, callback ) {
+    let elms = this._getElmList( target );
+    let emap = new Array( elms.length ).fill( false );
+    this._addCallback( 'reveal', 0, callback, { elms, emap } );
   }
 
   // auto scroll page to a target destination
@@ -107,75 +109,90 @@ export default class Scroller {
     }
   }
 
-  // fire initial tick when page is ready
-  _onLoad() {
-    this._scrolling = true;
-    this._onTick();
-  }
-
   // called from setInterval ticks
   _onTick() {
     if ( !this._scrolling ) return;
-    let sp = this._target.scrollTop | 0;
+
+    let sp     = this._target.scrollTop | 0;
+    let height = this._target.clientHeight | 0;
 
     for ( let i = 0; i < this._callbacks.length; ++i ) {
       let cb = this._callbacks[ i ];
 
-      if ( cb.trigger ) {
+      if ( !cb.trigger ) {
+        cb.called = false;
+        cb.callback( sp );
+        continue;
+      }
 
-        if ( cb.trigger === 'up' ) {
-          if ( !cb.called && sp < this._pos ) cb.callback( sp );
-          cb.called = ( sp < this._pos );
-        }
-        else if ( cb.trigger === 'down' ) {
-          if ( !cb.called && sp > this._pos ) cb.callback( sp );
-          cb.called = ( sp > this._pos );
-        }
-        else if ( cb.trigger === 'more' ) {
-          if ( !cb.called && sp > cb.position ) cb.callback( sp );
-          cb.called = ( sp > cb.position );
-        }
-        else if ( cb.trigger === 'less' ) {
-          if ( !cb.called && sp < cb.position ) cb.callback( sp );
-          cb.called = ( sp < cb.position );
-        }
-        else if ( cb.trigger === 'reveal' ) {
-          for ( let x = 0; x < cb.elms.length; ++x ) {
-            let elm  = cb.elms[ x ];
-            let box  = elm.getBoundingClientRect();
-            let yPos = box.top + ( box.height / 2 ); // elm center
-            let vis  = ( yPos >= 0 && yPos <= window.innerHeight );
-            let func = vis ? 'add' : 'remove';
-            elm.classList[ func ]( cb.clss );
-            cb.callback( elm, vis, sp );
+      if ( cb.trigger === 'up' ) {
+        let check = ( sp < this._pos );
+        if ( !cb.called && check ) cb.callback( sp );
+        cb.called = check;
+        continue;
+      }
+
+      if ( cb.trigger === 'down' ) {
+        let check = ( sp > this._pos );
+        if ( !cb.called && check ) cb.callback( sp );
+        cb.called = check;
+        continue;
+      }
+
+      if ( cb.trigger === 'more' ) {
+        let check = ( sp > cb.position );
+        if ( !cb.called && check ) cb.callback( sp );
+        cb.called = check;
+        continue;
+      }
+
+      if ( cb.trigger === 'less' ) {
+        let check = ( sp < cb.position );
+        if ( !cb.called && check ) cb.callback( sp );
+        cb.called = check;
+        continue;
+      }
+
+      if ( cb.trigger === 'reveal' ) {
+        for ( let x = 0; x < cb.elms.length; ++x ) {
+          let elm     = cb.elms[ x ];
+          let called  = cb.emap[ x ];
+          let box     = elm.getBoundingClientRect();
+          let yPos    = box.top + ( box.height / 2 );
+          let visible = ( yPos >= 0 && yPos <= height );
+
+          if ( ( !called && visible ) || ( called && !visible ) ) {
+            cb.callback( elm, visible, sp );
           }
+          cb.emap[ x ] = visible;
         }
         continue;
       }
-      cb.called = false;
-      cb.callback( sp );
     }
     this._pos = sp;
     this._scrolling = false;
   }
 
-  // page scrolling detected
+  // on target scroll
   _onScroll( e ) {
     this._scrolling = true;
-    if ( typeof this._scrollcb === 'function' ) {
-      this._scrollcb( e );
-    }
+    if ( typeof this._scrollcb === 'function' ) this._scrollcb( e );
+  }
+
+  // on page resize
+  _onResize( e ) {
+    this._scrolling = true;
   }
 
   // add custom callback to the list
-  _addCallback( trigger, position, callback ) {
+  _addCallback( trigger, position, callback, other ) {
     if ( typeof callback !== 'function' ) return;
-    this._callbacks.push({
+    this._callbacks.push( Object.assign( {
       called   : false,         // if already called
       trigger  : trigger,       // how to call it (more/less than, or none)
       position : position | 0,  // when to call it, or none
       callback : callback,      // custom callback
-    });
+    }, other ) );
   }
 
   // resolve list of elements from an arg
@@ -204,7 +221,7 @@ export default class Scroller {
       }
       return;
     }
-    this._pos += ( this._to - this._pos ) / this._ease;
+    this._pos += ( this._to - this._pos ) / this._options.easeFactor;
     this._target.scrollTop = this._pos;
     requestAnimationFrame( this._loop );
   }
