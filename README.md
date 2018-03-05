@@ -21,40 +21,42 @@ Import as a module and bundle using your preferred bundling method (Webpack, Gul
 // import class
 import Scroller from 'scroller';
 
-// setup scroller on target element (default: documentElement)
-let scroller = new Scroller( null );
-
-// toggle "visible" class on all ".reveal" elements when they enter/leave the visible area of the window
-scroller.onVisible( '.reveal', 'visible' );
+// setup scroller ( scrollElement, options )
+let scroller = new Scroller( null, {} );
 
 // when scroll position changes (realtime)
 scroller.onScroll( e => {
-    console.log( e.pageY );
+    console.log( 'onScroll', e.pageY );
 });
 
 // when scroll position changes (throttled)
 scroller.onChange( pos => {
-    console.log( pos );
+    console.log( 'onChange', pos );
+});
+
+// monitor elements as they enter/leave the viewport
+scroller.onVisible( '.someClass', ( elm, visible, pos ) => {
+  console.log( 'onVisible', elm, visible, pos );
 });
 
 // when scrolling up (triggered once)
 scroller.onUp( pos => {
-    console.log( 'going up', pos );
+    console.log( 'onUp', pos );
 });
 
 // when scrolling down (triggered once)
 scroller.onDown( pos => {
-    console.log( 'going down', pos );
+    console.log( 'onDown', pos );
 });
 
 // when scroll position is greater than a number (triggered once)
 scroller.moreThan( 200, pos => {
-    console.log( 'scrolled past 200', pos );
+    console.log( 'moreThan 200', pos );
 });
 
 // when scroll position is less than a number (triggered once)
 scroller.lessThan( 200, pos => {
-    console.log( 'scrolled less than 200', pos );
+    console.log( 'lessThan 200', pos );
 });
 
 // scroll to position by number
