@@ -2,6 +2,7 @@
   "name": "scroller",
   "license": "MIT",
   "description": "A page scroll event helper class for attaching actions to specific scroll positions/direction, or to jump to a section of the page.",
+  "version": "1.0.0",
   "author": {
     "name": "Rainner Lins",
     "email": "info@rainnerlins.com",
