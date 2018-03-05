@@ -73,7 +73,7 @@ html {
 body {
   font-family: $fontFamily;
   font-size: calc( #{$fontSize} - 4px );
-  line-height: 1.4em;
+  line-height: 1.5em;
   background-color: $colorDocument;
   color: $colorDocumentText;
 
@@ -99,7 +99,12 @@ body {
 
 // links
 a {
-  color: lighten( $colorDocument, 40% );
+  text-decoration: none;
+  color: lighten( $colorDocument, 50% );
+
+  &:hover {
+    color: lighten( $colorDocument, 40% );
+  }
 }
 
 // horizontal lines
@@ -135,6 +140,19 @@ h4 { font-size: 150%; }
 h5 { font-size: 120%; }
 h6 { font-size: 100%; }
 
+// lists
+ul, ol {
+  display: block;
+  list-style: circle;
+
+  li {
+    line-height: 1.2em;
+    margin: ( $padSpace / 4 ) $padSpace;
+    margin-right: 0;
+    padding: 0;
+  }
+}
+
 // common inner container
 .container {
   display: block;
@@ -168,6 +186,21 @@ h6 { font-size: 100%; }
   &.visible {
     transform: scale( 1 );
     opacity: 1;
+  }
+}
+
+// lazy-load image container
+.images {
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 0 $padSpace 0;
+
+    &:last-of-type {
+      margin: 0;
+    }
   }
 }
 
@@ -265,6 +298,9 @@ h6 { font-size: 100%; }
     top: 6.2em;
     width: 220px;
 
+    &.moveup {
+      transform: translateY( -100px );
+    }
     span { color: tan; }
   }
   .content-wrap {
@@ -279,5 +315,40 @@ h6 { font-size: 100%; }
   text-align: center;
   padding-bottom: $padSpace;
 }
+
+// common margins
+.push-top {
+  margin-top: $padSpace;
+}
+.push-right {
+  margin-right: $padSpace;
+}
+.push-bottom {
+  margin-bottom: $padSpace;
+}
+.push-left {
+  margin-left: $padSpace;
+}
+.push-all {
+  margin: $padSpace;
+}
+
+// common paddings
+.pad-top {
+  padding-top: $padSpace;
+}
+.pad-right {
+  padding-right: $padSpace;
+}
+.pad-bottom {
+  padding-bottom: $padSpace;
+}
+.pad-left {
+  padding-left: $padSpace;
+}
+.pad-all {
+  padding: $padSpace;
+}
+
 
 
