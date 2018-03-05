@@ -25,18 +25,18 @@
   <!-- page content -->
   <main class="main">
     <div class="container">
-      <h5>
-        This is a demo page for a Javascript scroll handling class
+
+      <big class="push-bottom">
+        This is a demo page for a <a href="https://github.com/rainner/scroller">Javascript scroll handling class</a>
         used to attach custom callbacks to scroll behavior as the page is being scrolled,
         or to jump to specific sections of the page as needed.
-      </h5>
-
+      </big>
       <hr />
 
       <div class="flex-row flex-row-reverse">
 
         <!-- info about scroll data -->
-        <div class="stats-wrap card">
+        <div id="stats-wrap" class="stats-wrap card">
           <p>
             <b>Position (realtime):</b> <br />
             <span id="stat-pos-real">0</span>
@@ -53,16 +53,24 @@
             <b>Trigger position:</b> <br />
             <span id="stat-trigger">...</span>
           </p>
-          <p>
-            <b>Scroll to:</b> <br />
-            <a href="#" data-scroll="top">Top</a> <br />
-            <a href="#" data-scroll="middle">Middle</a> <br />
-            <a href="#" data-scroll="bottom">Bottom</a> <br />
-          </p>
+          <hr />
+          <h5>Jump to section</h5>
+          <ul>
+            <li><a href="#" data-scroll="top">Top</a></li>
+            <li><a href="#" data-scroll="#dummytext1">Dummy text 1</a></li>
+            <li><a href="#" data-scroll="#toggleclass">Toggle class</a></li>
+            <li><a href="#" data-scroll="#dummytext2">Dummy text 2</a></li>
+            <li><a href="#" data-scroll="#lazyload">Lazyload images</a></li>
+            <li><a href="#" data-scroll="#dummytext3">Dummy text 3</a></li>
+            <li><a href="#" data-scroll="bottom">Bottom</a></li>
+          </ul>
         </div>
 
         <!-- page content -->
         <div class="content-wrap flex-1">
+
+          <h3 id="dummytext1" class="push-bottom">Dummy Text Content</h3>
+
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
@@ -72,27 +80,34 @@
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+
           <hr />
-          <div class="card reveal">
-            <h2>Reveal</h2>
+          <h3 id="toggleclass" class="push-bottom">Toggle Visible Class</h3>
+
+          <div class="card reveal push-bottom">
+            <h4>Visible</h4>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
           </div>
-          <hr />
-          <div class="card reveal">
-            <h2>Reveal</h2>
+          <div class="card reveal push-bottom">
+            <h4>Visible</h4>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
           </div>
-          <hr />
-          <div class="card reveal">
-            <h2>Reveal</h2>
+          <div class="card reveal push-bottom">
+            <h4>Visible</h4>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
           </div>
-          <hr />
-          <div class="card reveal">
-            <h2>Reveal</h2>
+          <div class="card reveal push-bottom">
+            <h4>Visible</h4>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
           </div>
+          <div class="card reveal push-bottom">
+            <h4>Visible</h4>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+          </div>
+
           <hr />
+          <h3 id="dummytext2" class="push-bottom">Dummy Text Content</h3>
+
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
@@ -100,6 +115,33 @@
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+
+          <hr />
+          <h3 id="lazyload" class="push-bottom">Lazy-load Images</h3>
+
+          <div class="images card">
+            <img src="http://via.placeholder.com/640x320" data-image="https://placeimg.com/640/320/tech?x=1" alt="image" />
+            <img src="http://via.placeholder.com/640x320" data-image="https://placeimg.com/640/320/tech?x=2" alt="image" />
+            <img src="http://via.placeholder.com/640x320" data-image="https://placeimg.com/640/320/tech?x=3" alt="image" />
+            <img src="http://via.placeholder.com/640x320" data-image="https://placeimg.com/640/320/tech?x=4" alt="image" />
+            <img src="http://via.placeholder.com/640x320" data-image="https://placeimg.com/640/320/tech?x=5" alt="image" />
+            <img src="http://via.placeholder.com/640x320" data-image="https://placeimg.com/640/320/tech?x=6" alt="image" />
+            <img src="http://via.placeholder.com/640x320" data-image="https://placeimg.com/640/320/tech?x=7" alt="image" />
+            <img src="http://via.placeholder.com/640x320" data-image="https://placeimg.com/640/320/tech?x=8" alt="image" />
+            <img src="http://via.placeholder.com/640x320" data-image="https://placeimg.com/640/320/tech?x=9" alt="image" />
+          </div>
+
+          <hr />
+          <h3 id="dummytext3" class="push-bottom">Dummy Text Content</h3>
+
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam blanditiis consequuntur provident, vitae non voluptate fuga accusantium fugiat reiciendis a veniam dolorum possimus? Ducimus voluptatum sequi consequuntur explicabo ipsa nesciunt.</p>
+
         </div>
 
       </div>
