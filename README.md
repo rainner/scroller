@@ -4,7 +4,10 @@
 
 # Scroller
 
-Listen for scroll events on the document or a custom target element, fire events while scrolling, or jump to a specified section. This class uses throttling to preserve scroll performance. No bloat or dependencies.
+![Scroller](https://raw.githubusercontent.com/rainner/scroller/master/thumb.jpg)
+
+Listen for scroll events on the document or a custom target element, fire events while scrolling, or jump to a specified section.
+Useful for triggering CSS animations as the user scrolls a page, or to lazy-load content when a section enters the visible area of the screen. This class uses throttling to preserve scroll performance.
 
 [Check out the demo][demo]
 
